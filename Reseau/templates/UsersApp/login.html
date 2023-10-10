@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+  <h2>Connexion</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.username.label_tag }}
+    {{ form.username }}
+    {{ form.password.label_tag }}
+    {{ form.password }}
+    <button type="submit">Se connecter</button>
+  </form>
+  <h2>Inscription</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ registration_form.username.label_tag }}
+    {{ registration_form.username }}
+    {{ registration_form.password1.label_tag }}
+    {{ registration_form.password1 }}
+    {{ registration_form.password2.label_tag }}
+    {{ registration_form.password2 }}
+    
+    <button type="submit">S'inscrire</button>
+  </form>
+{% endblock content %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/UsersApp/login.css' %}">
+  {% endblock extra_css %}
