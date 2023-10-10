@@ -8,11 +8,17 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
+/* Pour les éléments dans les formulaires */
+form input {
+    display: block;
+    margin-bottom: 10px;
+}
+
 
 /* Styles pour les champs de saisie */
 input[type="text"],
 input[type="password"] {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -22,7 +28,7 @@ input[type="password"] {
 /* Styles pour le bouton de connexion */
 button[type="submit"] {
     background-color: #007bff;
-    color: #fff;
+    color: #e81b1b;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -32,5 +38,19 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
+/* Pour les labels dans les formulaires */
+label {
+    display: flex; /* Fait apparaître chaque label sur une nouvelle ligne */
+    flex-direction: column;
+    margin-bottom: 5px; /* Ajoute un espacement entre chaque label */
+}
+
+/* Pour les champs de formulaire dans les formulaires */
+input {
+    display: flex; /* Fait apparaître chaque label sur une nouvelle ligne */
+    flex-direction: column; /* Fait apparaître chaque champ sur une nouvelle ligne */
+    margin-bottom: 10px; /* Ajoute un espacement entre chaque champ */
+}
+
 
 /* Autres styles pour le reste de la page (par exemple, en-tête, pied de page, etc.) */
