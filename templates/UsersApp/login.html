@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block extra_head %}<link rel="stylesheet" href="{%  static 'css/UsersApp/login.css' %}">{% endblock %}
 
 
 {% block content %}
@@ -26,6 +26,4 @@
     <button type="submit">S'inscrire</button>
   </form>
 {% endblock content %}
-{% block extra_css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/UsersApp/login.css' %}">
-  {% endblock extra_css %}
+

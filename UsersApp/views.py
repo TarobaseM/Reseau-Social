@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from .forms import LoginForm
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 def login_view(request):
     if request.method == 'POST':
@@ -16,3 +17,9 @@ def login_view(request):
     return render(request, 'UsersApp/login.html', {'form': form,  'registration_form': UserCreationForm()})
 
 
+
+def logout_view(request):
+    # Use Django's logout function to log out the user
+    logout(request)
+    # Redirect to the home page or any other page you prefer
+    return redirect('home')
