@@ -5,14 +5,25 @@
 {% block extra_head %}<link rel="stylesheet" href="{%  static 'css/postapp/home.css' %}">{% endblock %}
 
 {% block content %}
-    <a href="{% url 'poster' %}">Poster une publication</a>
+    <a id ="bouton_post" href="{% url 'poster' %}">Poster une publication</a>
     
     {% if posts %}
         <div class="posts">
             {% for post in posts %}
                 <div class="post">
+                    {% if post.author == user %}
+                    <p><strong>Moi</strong> - {{ post.created_at }}</p>
+                    {% else %}
                     <p><strong>{{ post.author.username }}</strong> - {{ post.created_at }}</p>
+                    {% endif %}
                     <p>{{ post.content }}</p>
+                    {% if post.image %}
+                    <img src="{{post.image.url}}" alt="post" style="width: 100px;height:100px" >
+                    {% else %}
+
+                    {% endif %}
+
+                    
                 </div>
             {% endfor %}
         </div>

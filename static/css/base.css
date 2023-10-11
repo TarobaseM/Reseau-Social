@@ -2,20 +2,23 @@
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #1347aa;
+    background-color: #072fb2;
     color: #fff;
 }
 
 header {
-    background-color: #fffffffa;
+    background-color: #f05b5bfa;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    background-color: #072fb2;
+
 }
 
 
 nav {
-    background-color: #1347aa;
+    
+    display:flex;
+    justify-content: flex-end;
 }
 
 nav ul {
@@ -63,7 +66,7 @@ html{
     margin-top:20px;
 }
 h1 {
-    background-color: #333;
+    
     color: #fff;
     padding: 10px;
     text-align: center;

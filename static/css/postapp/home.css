@@ -1,14 +1,11 @@
 /* Reset some default styles */
-body, h1, p {
-    margin: 0;
-    padding: 0;
-}
+
 
 /* Apply some basic styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    padding: 20px;
+    
 }
 
 
@@ -17,22 +14,57 @@ body {
     margin-top: 20px;
 }
 
-.post {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
-.post p {
-    margin: 0;
-}
+
 
 .post p:first-child {
     margin-bottom: 5px;
 }
 
 .post strong {
-    color: #22d740;
+    color: #010e03;
+}
+/* Style de base pour le bouton "Poster une publication" */
+#bouton_post{
+    display: inline-block; /* Permet au lien de se comporter comme un bouton en ligne */
+    padding: 10px 20px; /* Ajoutez du rembourrage autour du texte pour définir la taille */
+    background-color: #007BFF; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Supprime le soulignement du lien */
+    border-radius: 5px; /* Coins arrondis */
+    font-weight: bold; /* Texte en gras */
+    transition: background-color 0.3s, color 0.3s; /* Ajoute une transition en douceur pour le changement de couleur */
+}
+
+/* Style lorsque le curseur survole le bouton */
+#bouton_post:hover {
+    background-color: #0056b3; /* Nouvelle couleur de fond au survol */
+}
+
+/* Style lorsque le bouton est actif (clic) */
+#bouton_post:active {
+    background-color: #003a73; /* Nouvelle couleur de fond lors du clic */
+}
+#bouton_post{
+    margin-top:20px;
+}
+.post {
+    background-color: #ffffff38;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.post h2,
+.post p {
+    margin-top: 0; /* Réduire la marge en haut du titre et du contenu */
+}
+
+.post p {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: hidden;
 }
