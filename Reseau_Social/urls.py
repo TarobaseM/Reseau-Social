@@ -21,7 +21,9 @@ urlpatterns = [
     path('login/', usersviews.login_view, name='login'),
     path('logout/', LogoutView.as_view(next_page='login'),name='logout'),
     path('home/', postviews.home, name='home'),
-    path('poster/', postviews.poster, name='poster'),]
+    path('poster/', postviews.poster, name='poster'),
+    path('signup/', usersviews.registration_view, name='signup'),
+     ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
