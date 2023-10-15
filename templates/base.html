@@ -21,7 +21,7 @@
                 
                 <!-- Autres éléments de navigation ici -->
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+                <li><a href="{% url 'account_logout' %}">Déconnexion</a></li>
                 {% else %}
                 <li><a href="{% url 'login' %}">Connexion</a></li>
                 {% endif %}

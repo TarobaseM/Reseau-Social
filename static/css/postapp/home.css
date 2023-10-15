@@ -69,3 +69,12 @@ body {
     word-wrap: break-word;
     overflow-x: hidden;
 }
+/* Appliquez un style à toutes les images de votre réseau social */
+
+img {
+    
+    max-width: none;
+    max-height: none;
+}
+    
+

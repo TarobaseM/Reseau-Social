@@ -1,7 +1,7 @@
 
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from django.contrib.auth.views import LogoutView
 from PostApp import views as postviews
 from UsersApp import views as usersviews
@@ -14,15 +14,21 @@ from django.conf.urls.static import static
 
 
 
+
 urlpatterns = [
    
      path('admin/', admin.site.urls),
     path('', postviews.home, name='home'),
-    path('login/', usersviews.login_view, name='login'),
-    path('logout/', LogoutView.as_view(next_page='login'),name='logout'),
+    
     path('home/', postviews.home, name='home'),
     path('poster/', postviews.poster, name='poster'),
-    path('signup/', usersviews.registration_view, name='signup'),
+    path('accounts/', include('allauth.urls')),
+    path('login/', usersviews.google_login, name='login'),
+    path('logout/', usersviews.google_logout, name='logout'),
+    path('social/', include('allauth.socialaccount.urls')),
+
+
+    
      ]
 
 if settings.DEBUG:

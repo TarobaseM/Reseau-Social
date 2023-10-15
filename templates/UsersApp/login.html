@@ -1,26 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load socialaccount %}
 {% block extra_head %}<link rel="stylesheet" href="{% static 'css/UsersApp/login.css' %}">{% endblock %}
 
 {% block content %}
-  <h2>Connexion</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ login_form.username.label_tag }}
-    {{ login_form.username }}
-    {{ login_form.password.label_tag }}
-    {{ login_form.password }}
-    <button type="submit">Se connecter</button>
-  </form>
-  <h2>Inscription</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ registration_form.username.label_tag }}
-    {{ registration_form.username }}
-    {{ registration_form.password1.label_tag }}
-    {{ registration_form.password1 }}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connexion avec Google</title>
+</head>
+<body>
     
-    <button type="submit">Inscription</button>
-  </form>
+    <a href="{% url 'account_login' %}">Se connecter avec Google</a>
+</body>
+</html>
+
+
+
 {% endblock content %}
 
