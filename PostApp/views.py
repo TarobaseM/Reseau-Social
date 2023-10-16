@@ -6,10 +6,13 @@ from django.shortcuts import render
 from .models import Post
 from django.shortcuts import render, redirect
 from .forms import PostForm
+from django.shortcuts import redirect
+
 @login_required
 def home(request):
     posts = Post.objects.all().order_by('-created_at')
-    return render(request, 'postapp/home.html', {'posts': posts})
+    
+    return render(request, 'postapp/home.html', {'posts': posts,'like_post':like_post})
 
 @login_required
 def poster(request):
@@ -25,3 +28,11 @@ def poster(request):
         form = PostForm()
 
     return render(request, 'postapp/poster.html', {'form': form})
+def like_post(request, post_id):
+    if request.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        if request.user in post.likes.all():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+    return redirect('home')

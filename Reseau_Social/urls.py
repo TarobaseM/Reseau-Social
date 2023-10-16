@@ -26,6 +26,7 @@ urlpatterns = [
     path('login/', usersviews.google_login, name='login'),
     path('logout/', usersviews.google_logout, name='logout'),
     path('social/', include('allauth.socialaccount.urls')),
+    path('post/<int:post_id>/like/', postviews.like_post, name='like_post'),
 
 
     

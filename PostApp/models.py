@@ -6,6 +6,9 @@ class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     image=models.ImageField(upload_to="images_postes/",blank=True,null=True)
+    likes = models.ManyToManyField(User, related_name='liked_publications')
     
     def __str__(self):
         return f"Post by {self.author.username} at {self.created_at}"
+    def total_likes(self):
+        return self.likes.count()
