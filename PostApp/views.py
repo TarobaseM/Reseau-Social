@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.shortcuts import render
 from .models import Post
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
 from .forms import PostForm
 from django.shortcuts import redirect
 

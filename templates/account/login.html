@@ -7,28 +7,26 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock head_title %}
 
 {% block content %}
-
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="card">
-        <div class="card-header">
-          <h1 class="card-title" style="color: black;">{% trans "Sign In" %}</h1>
+        <div class="card-header bg-primary">
+          <h1 class="card-title text-white">{% trans "Sign In" %}</h1>
         </div>
         <div class="card-body">
           {% get_providers as socialaccount_providers %}
 
           {% if socialaccount_providers %}
-            <p>{% blocktrans with site.name as site_name %}Please sign in with one
-            of your existing third-party accounts. </p>
-            <p> <a href="{{ signup_url }}" style="background-color: hsla(64, 100%, 50%, 0.856);">Sign up</a>
-            for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+            
 
-            <ul class="list-unstyled" >
-              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-            </ul>
-            
-            
+            <!-- Replace the link with a clickable Google image -->
+            <a href="{% url 'google_login' %}" class="btn btn-light">
+              <img src="{% static 'images/Google.png' %}" alt="Google" style="max-width: 200px; margin-right: 10px;">
+              
+            </a>
+            <br>
+
             <div class="alert alert-info mt-3">{% trans 'or' %}</div>
           {% endif %}
 
@@ -38,15 +36,19 @@
             {% csrf_token %}
             {{ form.as_p }}
             {% if redirect_field_value %}
-              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              <input name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             <a class="btn btn-secondary mt-3" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
             <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
           </form>
+          <br>
+          <br>
+          <br>
+          <a href="{% url 'account_signup' %}" class="btn btn-success">Sign up</a>
+            
         </div>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock content %}

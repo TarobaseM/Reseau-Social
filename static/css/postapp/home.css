@@ -76,5 +76,9 @@ img {
     max-width: none;
     max-height: none;
 }
+a{
+    color:hsla(138, 53%, 48%, 0.918);
+    text-decoration: underline;
     
+}
 

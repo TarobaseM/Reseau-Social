@@ -2,8 +2,8 @@
 
 {% block title %}Mon Reseau  - Accueil{% endblock %}
 {% load static %} 
-{% block extra_head %}<link rel="stylesheet" href="{%  static 'css/postapp/home.css' %}">{% endblock %}
-
+{% block extra_head %}<link rel="stylesheet" href="{%  static 'css/postapp/home.css' %}">
+<script src="{% static 'js/postapp/script.js' %}"></script>{% endblock %}
 {% block content %}
     <a id ="bouton_post" href="{% url 'poster' %}">Poster une publication</a>
     
@@ -11,19 +11,34 @@
         <div class="posts">
             {% for post in posts %}
                 <div class="post">
+                    <div class="post-haut">
                     {% if post.author == user %}
                     <p><strong>Moi</strong> - {{ post.created_at }}</p>
                     {% else %}
                     <p><strong>{{ post.author.username }}</strong> - {{ post.created_at }}</p>
                     {% endif %}
-                    <p>{{ post.content }}</p>
+                    </div>
                     {% if post.image %}
                     <img src="{{post.image.url}}" alt="post" style="width: 100px;height:100px" >
                     {% else %}
 
                     {% endif %}
-                    <p>{{ post.likes.count }}</p>
-                    {% if user in publication.likes.all %}
+                    <br>
+                    {% if post.shared_url %}
+<a href="{{ post.shared_url }}" target="_blank">{{ post.shared_url }}</a>
+{% endif %}
+<br>
+                    <p>{{ post.content }}</p>
+                    
+                    <button class="likes-count">{{ post.likes.count }}</button>
+                    <div class="likes-list" style="display: none;">
+                        <ul>
+                          {% for user in post.likes.all %}
+                            <li>{{ user.username }}</li>
+                          {% endfor %}
+                        </ul>
+                    </div>
+                    {% if user in post.likes.all %}
     <form method="post" action="{% url 'like_post' post.id %}">
         {% csrf_token %}
         <button type="submit">Unlike</button>
