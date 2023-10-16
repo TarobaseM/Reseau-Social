@@ -4,7 +4,10 @@ from django.contrib.auth.models import User
 from .forms import LoginForm, RegistrationForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+
 from social_django.models import UserSocialAuth
+
+
 
 
 
@@ -13,7 +16,7 @@ def google_login(request):
         # L'utilisateur est déjà connecté, redirigez-le vers une page appropriée
         return redirect('home')
 
-    return render(request, 'UsersApp/login.html')
+    return render(request, 'account/login.html')
 
 def google_logout(request):
     # Déconnecte l'utilisateur de Google
