@@ -1,0 +1,60 @@
+/* Pour le grand conteneur de la page */
+.container {
+    padding: 50px;
+    margin-top: 30px;
+    
+  }
+  
+  /* Pour l'en-tête de la carte */
+  .card-header {
+    background-color: #007bff;
+    text-align: center;
+  }
+  
+  .card-title {
+    color: #fff;
+  }
+  
+  /* Pour le texte du lien "Forgot Password?" */
+  .btn-link.small {
+    font-size: 14px;
+  }
+  
+  /* Pour les boutons "Se connecter" et "Inscription" */
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 20px; /* Bord arrondi */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Ombre */
+    transition: 0.3s; /* Effet hover de 0.3 secondes */
+  }
+  
+  .btn-success {
+    background-color: hsla(134, 84%, 44%, 0.648);
+    color: #fff;
+    font-size:14px;
+    
+    border-radius: 20px; /* Bord arrondi */
+    box-shadow: 0 3px 6px #fdf9f9db; /* Ombre */
+    transition: 0.3s; /* Effet hover de 0.3 secondes */
+    margin-left: 45px;
+  }
+  
+  .btn-primary:hover, .btn-success:hover {
+    background-color: #0056b3; /* Couleur légèrement plus foncée au survol */
+    transform: scale(1.05); /* Effet d'agrandissement au survol */
+  }
+p{
+    margin-bottom:20px;
+}
+.card-body{
+    border-radius: 15px;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1); /* Ombre */
+    background-color: aliceblue;
+    padding: 5%;
+
+}
+#alert-info-mt-3{
+    display:flex;
+    margin-left: 90px;
+}

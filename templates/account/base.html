@@ -31,7 +31,9 @@
                 {% else %}
                 <li><a href="{% url 'account_login' %}">Connexion</a></li>
                 {% endif %}
-    
+                {% if user.is_superuser %}
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
