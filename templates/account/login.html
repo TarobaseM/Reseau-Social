@@ -22,10 +22,11 @@
             
 
             <!-- Replace the link with a clickable Google image -->
-            <a href="https://accounts.google.com/o/oauth2/auth?client_id=154937134517-3qufbgf8k3m3gq9jiubd7qa4s739ejcj.apps.googleusercontent.com&redirect_uri=https://tomamar707.pythonanywhere.com/accounts/google/login/callback/&scope=https://www.googleapis.com/auth/userinfo.email&response_type=code&access_type=offline"  class="btn btn-light">
+            <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=154937134517-3qufbgf8k3m3gq9jiubd7qa4s739ejcj.apps.googleusercontent.com&redirect_uri=https://tomamar707.pythonanywhere.com/accounts/google/login/callback/&scope=profile+email&response_type=code&state=v5PR9cvzozbf0HwY&access_type=online&code_challenge_method=S256&code_challenge=1XzwbH4Y7_TyIwtBgXdjIfwH_v6cZOsZJ7P7YV-NK-A" class="btn btn-light">
               <img src="{% static 'images/Google.png' %}" alt="Google" style="max-width: 200px; margin-right: 10px;">
-              
-            </a>
+          </a>
+          
+          
             <br>
 
             <span id="alert-info-mt-3">{% trans 'or' %}</span>

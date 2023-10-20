@@ -12,9 +12,16 @@ body {
 
 .posts {
     margin-top: 20px;
+    margin-bottom: 30px;
+}
+.likes-count,.likes-list,button{
+    float:left;
+    margin-left:5px;
 }
 
-
+.likes-list{
+  margin-top: 15px;
+}
 
 
 .post p:first-child {
@@ -50,15 +57,24 @@ body {
     margin-top:20px;
 }
 .post {
-    background-color: #ffffff38;
+    
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     max-height: 200px;
+    border-radius:25px;
     
 }
+.post:nth-child(odd){
+    background-color:hwb(213 53% 7%);
+}
+.post:nth-child(even){
+    background-color:#2b83f6;
+}
+
+
 
 .post h2,
 .post p {
@@ -72,14 +88,22 @@ body {
 }
 /* Appliquez un style à toutes les images de votre réseau social */
 
-img {
-    
-    width: 250x;  /* Largeur fixe de 300 pixels */
-    height: 150px;
-}
-a{
-    color:hsla(138, 53%, 48%, 0.918);
-    text-decoration: underline;
-    
-}
 
+
+#url{
+    color:hsla(242, 83%, 50%, 0.918);
+    text-decoration: underline;
+}
+img {
+   
+    border: 1.5px solid hsl(0, 3%, 6%);
+}
+.half-size{
+    max-width: 10%; /* Réduit la largeur de l'image de moitié */
+    height:auto;
+}
+@media (max-width: 768px) {
+    .half-size {
+        max-width: 30%; /* Image occupe la largeur de son conteneur parent sans redimensionnement */
+    }
+}

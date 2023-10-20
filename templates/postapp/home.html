@@ -19,18 +19,19 @@
                     {% endif %}
                     </div>
                     {% if post.image %}
-                    <img src="{{post.image.url}}" alt="post" style="width: 100px;height:100px" >
+                    
+                    <img src="{{post.image.url}}" class="img-fluid half-size" alt="post"  >
+                
                     {% else %}
 
                     {% endif %}
-                    <br>
+                    
                     {% if post.shared_url %}
-<a href="{{ post.shared_url }}" target="_blank">{{ post.shared_url }}</a>
+<a id="url" href="{{ post.shared_url }}" target="_blank">{{ post.shared_url }}</a>
 {% endif %}
-<br>
                     <p>{{ post.content }}</p>
                     
-                    <button class="likes-count">{{ post.likes.count }}</button>
+                    <button class="likes-count">{{ post.likes.count }}&#x2665;</button>
                     <div class="likes-list" style="display: none;">
                         <ul>
                           {% for user in post.likes.all %}
@@ -41,12 +42,12 @@
                     {% if user in post.likes.all %}
     <form method="post" action="{% url 'like_post' post.id %}">
         {% csrf_token %}
-        <button type="submit">Unlike</button>
+        <button type="submit">&#x2665;</button>
     </form>
 {% else %}
     <form method="post" action="{% url 'like_post' post.id %}">
         {% csrf_token %}
-        <button type="submit">Like</button>
+        <button type="submit">&#x1F90D;</button>
     </form>
 {% endif %}
 
