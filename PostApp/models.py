@@ -6,7 +6,7 @@ class Post(models.Model):
     content = models.TextField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
     image=models.ImageField(upload_to="images_postes/",blank=True,null=True)
-    likes = models.ManyToManyField(User, related_name='liked_publications')
+    likes = models.ManyToManyField(User, related_name='liked_publications',null=True)
     shared_url = models.URLField(blank=True, null=True)
     
     def __str__(self):
@@ -20,3 +20,8 @@ class Post(models.Model):
     def get_image_height(self):
         with Post.open(self.image.path) as img:
             return img.height
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)

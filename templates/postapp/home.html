@@ -51,7 +51,20 @@
     </form>
 {% endif %}
 
-
+<form method="post" action="{% url 'add_comment' post.id %}" class="comform" style="display: none;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" >Ajouter un commentaire</button>
+</form>
+<button type="submit" class="commenter">&#128172;</button>
+<div class="comments">
+    {% for comment in post.comments.all reversed%}
+        <div class="comment">
+            <p><strong>{{ comment.author.username }}</strong> - {{ comment.created_at }}</p>
+            <p>{{ comment.content }}</p>
+        </div>
+    {% endfor %}
+</div>
                     
                 </div>
             {% endfor %}

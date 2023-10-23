@@ -21,6 +21,7 @@ body {
 
 .likes-list{
   margin-top: 15px;
+  
 }
 
 
@@ -60,7 +61,7 @@ body {
     
     border: 1px solid #ccc;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     max-height: 200px;
@@ -82,7 +83,7 @@ body {
 }
 
 .post p {
-    white-space: pre-wrap;
+    
     word-wrap: break-word;
     overflow-x: hidden;
 }
@@ -106,4 +107,44 @@ img {
     .half-size {
         max-width: 30%; /* Image occupe la largeur de son conteneur parent sans redimensionnement */
     }
+}
+
+.comform textarea {
+    margin: 0px; 
+    width: 355px; 
+    height: 30px;
+    
+    
+}
+.comform label{
+    display: none;
+}
+
+.comform button {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Stylisation des commentaires */
+.comments {
+    margin-top: 30px; /* Réduire l'espace au-dessus de la section des commentaires */
+}
+
+.comment {
+    border: 1px solid #ccc;
+    padding: 3px;
+    margin-bottom: 3px;
+    margin-top:5px;
+}
+
+.comment p {
+    margin: 0;
+}
+
+.comment p strong {
+    font-weight: bold;
+    color: #fdfdfd;
 }

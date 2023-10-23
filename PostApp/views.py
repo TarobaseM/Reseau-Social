@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 
-
+from django.shortcuts import render, redirect,get_object_or_404
+from .models import Post, Comment
+from .forms import CommentForm
 # Create your views here.
 from django.shortcuts import render
 from .models import Post
@@ -11,8 +13,9 @@ from django.shortcuts import redirect
 @login_required
 def home(request):
     posts = Post.objects.all().order_by('-created_at')
+    form=CommentForm()
     
-    return render(request, 'postapp/home.html', {'posts': posts,'like_post':like_post})
+    return render(request, 'postapp/home.html', {'posts': posts,'like_post':like_post,'form':form})
 
 @login_required
 def poster(request):
@@ -35,4 +38,17 @@ def like_post(request, post_id):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
+    return redirect('home')
+def add_comment(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            return redirect('home')  # Redirigez l'utilisateur vers la page d'accueil après avoir ajouté un commentaire
+
     return redirect('home')

@@ -11,6 +11,18 @@ $(document).ready(function() {
             $likesList.show();
         }
     });
-
+    $('.commenter').click(function(event) {
+        event.stopPropagation();
+        
+        var $commentList = $(this).prev('.comform');
+        // Vérifier si l'élément est visible
+        if ($commentList.is(':visible')) {
+            // S'il est visible, le cacher
+            $commentList.hide();
+        } else {
+            // S'il est est caché, le montrer
+            $commentList.show();
+        }
+    });
     
 });
