@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Mon Reseau  - Accueil{% endblock %}
+{% block title %}TarobaseM - Accueil{% endblock %}
 {% load static %} 
 {% block extra_head %}<link rel="stylesheet" href="{%  static 'css/postapp/home.css' %}">
 <script src="{% static 'js/postapp/script.js' %}"></script>{% endblock %}
@@ -57,10 +57,21 @@
     <button type="submit" >Ajouter un commentaire</button>
 </form>
 <button type="submit" class="commenter">&#128172;</button>
+{% if post.author == user %}
+<form method="post" action="{% url 'delete_post' post.id %}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce post ?');">
+    {% csrf_token %}
+    <button type="submit">...</button>
+</form>
+{% endif %}
 <div class="comments">
     {% for comment in post.comments.all reversed%}
         <div class="comment">
+            {% if comment.author == user %}
+            <p><strong>Moi</strong> - {{ comment.created_at }}</p>
+            {% else %}
             <p><strong>{{ comment.author.username }}</strong> - {{ comment.created_at }}</p>
+            {% endif %}
+            
             <p>{{ comment.content }}</p>
         </div>
     {% endfor %}

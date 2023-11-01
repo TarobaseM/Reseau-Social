@@ -100,8 +100,12 @@ WSGI_APPLICATION = 'Reseau_Social.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',   # Moteur de base de données par défaut (SQLite par défaut)
+        'NAME': BASE_DIR / 'db.sqlite3',           # Nom de la base de données
+        'USER': '',                               # Nom d'utilisateur de la base de données
+        'PASSWORD': '',                           # Mot de passe de la base de données
+        'HOST': '',                               # Nom d'hôte de la base de données
+        'PORT': '',                               # Port de la base de données
     }
 }
 

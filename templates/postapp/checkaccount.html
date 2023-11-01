@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}<link rel="stylesheet" href="{%  static 'css/postapp/home.css' %}">{% endblock %}
+
+
+{% block content %}
+<section class="mon_profil">
+<div class="identite">
+    <p id="infos">Mon nom d'utilisateur: <strong>{{ user.username }}</strong></p>
+    <p id="infos">Mon id : {{ user.id }}</p>
+    <p id="infos">Mon email: {{ user.email}}</p>
+</div>
+</section>
+<section class="mes_posts">
+    <h2>Mes posts</h2>
+    
+        {% if posts %}
+        <div class="posts">
+            {% for post in posts reversed %}
+                <div class="post">
+                    <div class="post-haut">
+                    {% if post.author == user %}
+                    <p><strong>Moi</strong> - {{ post.created_at }}</p>
+                    {% else %}
+                    <p><strong>{{ post.author.username }}</strong> - {{ post.created_at }}</p>
+                    {% endif %}
+                    </div>
+                    {% if post.image %}
+                    
+                    <img src="{{post.image.url}}" class="img-fluid half-size" alt="post"  >
+                
+                    {% else %}
+
+                    {% endif %}
+                    
+                    {% if post.shared_url %}
+<a id="url" href="{{ post.shared_url }}" target="_blank">{{ post.shared_url }}</a>
+{% endif %}
+                    <p>{{ post.content }}</p>
+                    
+                    <button class="likes-count">{{ post.likes.count }}&#x2665;</button>
+                    <div class="likes-list" style="display: none;">
+                        <ul>
+                          {% for user in post.likes.all %}
+                            <li>{{ user.username }}</li>
+                          {% endfor %}
+                        </ul>
+                    </div>
+                    {% if user in post.likes.all %}
+    <form method="post" action="{% url 'like_post' post.id %}">
+        {% csrf_token %}
+        <button type="submit">&#x2665;</button>
+    </form>
+{% else %}
+    <form method="post" action="{% url 'like_post' post.id %}">
+        {% csrf_token %}
+        <button type="submit">&#x1F90D;</button>
+    </form>
+{% endif %}
+
+<form method="post" action="{% url 'add_comment' post.id %}" class="comform" style="display: none;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" >Ajouter un commentaire</button>
+</form>
+<button type="submit" class="commenter">&#128172;</button>
+<form method="post" action="{% url 'delete_post' post.id %}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce post ?');">
+    {% csrf_token %}
+    <button type="submit">...</button>
+</form>
+<div class="comments">
+    {% for comment in post.comments.all reversed%}
+        <div class="comment">
+            {% if comment.author == user %}
+            <p><strong>Moi</strong> - {{ comment.created_at }}</p>
+            {% else %}
+            <p><strong>{{ comment.author.username }}</strong> - {{ comment.created_at }}</p>
+            {% endif %}
+            
+            <p>{{ comment.content }}</p>
+        </div>
+    {% endfor %}
+</div>
+                    
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucun post disponible pour le moment.</p>
+    {% endif %}
+    </div>
+</section>
+
+{% endblock content %}
+
+
+
+

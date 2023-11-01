@@ -64,8 +64,10 @@ body {
     margin-bottom: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    max-height: 200px;
+    max-height: 300px;
     border-radius:25px;
+    width:85%;
+    
     
 }
 .post:nth-child(odd){
@@ -111,8 +113,9 @@ img {
 
 .comform textarea {
     margin: 0px; 
-    width: 355px; 
-    height: 30px;
+    width: 400px; 
+    height: 15px;
+    size-adjust: none;
     
     
 }
@@ -134,10 +137,13 @@ img {
 }
 
 .comment {
-    border: 1px solid #ccc;
+    border:  1px solid rgba(69, 53, 53, 0.83);
     padding: 3px;
     margin-bottom: 3px;
     margin-top:5px;
+    margin-left: 10px;
+    border-radius: 15px;
+    width:85%;
 }
 
 .comment p {
@@ -147,4 +153,12 @@ img {
 .comment p strong {
     font-weight: bold;
     color: #fdfdfd;
+}
+.identite{
+    width: 300px;
+   border: 5px solid rgb(0, 3, 0);
+  padding: 20px;
+  margin: auto;
+  margin-top:25px;
+  margin-bottom:25px;
 }

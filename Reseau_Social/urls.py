@@ -30,6 +30,8 @@ urlpatterns = [
     path('social/', include('allauth.socialaccount.urls')),
     path('post/<int:post_id>/like/', postviews.like_post, name='like_post'),
     path('add_comment/<int:post_id>/', postviews.add_comment, name='add_comment'),
+    path('check_account/<str:account_id>/', postviews.check_acount, name='check_account'),
+    path('delete_post/<int:post_id>/', postviews.delete_post, name='delete_post'),
     
 
 

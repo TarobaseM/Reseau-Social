@@ -9,13 +9,16 @@ from .models import Post
 from django.shortcuts import render, redirect,HttpResponse
 from .forms import PostForm
 from django.shortcuts import redirect
+from django.contrib.auth.models import User
 
 @login_required
 def home(request):
     posts = Post.objects.all().order_by('-created_at')
     form=CommentForm()
+    user=request.user
     
-    return render(request, 'postapp/home.html', {'posts': posts,'like_post':like_post,'form':form})
+    
+    return render(request, 'postapp/home.html', {'posts': posts,'like_post':like_post,'form':form,"user":user})
 
 @login_required
 def poster(request):
@@ -52,3 +55,18 @@ def add_comment(request, post_id):
             return redirect('home')  # Redirigez l'utilisateur vers la page d'accueil après avoir ajouté un commentaire
 
     return redirect('home')
+
+@login_required
+def check_acount(request,account_id):
+    user=request.user
+    users=User.objects.all()
+    posts=Post.objects.filter(author=user)
+    
+    return render(request, 'postapp/checkaccount.html', {"user":user,"account_id":account_id,"users":users,"posts":posts})
+
+@login_required
+def delete_post(request,post_id):
+    user=request.user
+    post=get_object_or_404(Post, pk=post_id,author=user)
+    post.delete()
+    return redirect ('check_account',account_id=user.username)
